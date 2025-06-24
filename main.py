@@ -1,4 +1,5 @@
-import pygame 
+import pygame
+import sys
 from constants import *
 from player import Player
 from asteroidfield import AsteroidField
@@ -26,8 +27,12 @@ def main():
         screen.fill("black")
         dt = clock.tick(60)/1000
         updatable.update(dt)
-        for draws in drawable:
-            draws.draw(screen)
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+                print("Game over!")
+                sys.exit()
+        for sprite in drawable:
+            sprite.draw(screen)
         pygame.display.flip()
 if __name__ == "__main__":
     main()
