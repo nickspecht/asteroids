@@ -37,7 +37,7 @@ def main():
         for asteroid in asteroids.copy():
             for shot in shots.copy():
                 if shot.collides_with(asteroid):
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill() 
         for sprite in drawable:
             sprite.draw(screen)
